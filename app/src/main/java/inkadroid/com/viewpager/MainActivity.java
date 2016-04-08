@@ -1,5 +1,6 @@
 package inkadroid.com.viewpager;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
@@ -24,6 +25,8 @@ public class MainActivity extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         /////////////google analytic///////////////////////////////////////////////////
         Tracker t = ((inkadroid.com.viewpager.ViewPager) getApplication()).getTracker();
         t.setScreenName("Pagina - Principal");
@@ -74,8 +77,13 @@ public class MainActivity extends Activity  {
         ir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplication(),"EN CONSTRUCCION",Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplication(),"EN CONSTRUCCION",Toast.LENGTH_LONG).show();
+                Intent myIntent = new Intent(MainActivity.this, Principal.class);
+                MainActivity.this.startActivity(myIntent);
+
             }
+
+
         });
 
         //COLOCAR EN LA PAGINA PRINCPAL UNA IMAGEN CARGADA A TRAVEZ DE Picasso
@@ -94,6 +102,7 @@ public class MainActivity extends Activity  {
         }else{
             sp.edit().putBoolean("first time",false).apply();
         }
+
     }
 
     //obteniendo la resolucion de la pantalla
